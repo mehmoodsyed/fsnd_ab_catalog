@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+<div class="col-md-11 padding-none">
+        <h1>Genre</h1>
+</div>
+    
+	<div class="row padding-top padding-bottom">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 padding-none">
+                <a href="{{url_for('newGenre')}}">
+                    <button class="btn btn-default" id="new-genre">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Genre
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-1"></div>
+    </div>
+
+    {% for genre in genre %}
+        
+			<div class="row">
+				<div class="col-md-1"></div>
+					<div class="col-md-2">
+                        <a href = "{{url_for('showGenreBooks', genre_id = genre.id)}}">
+						<h3>{{genre.name}}</h3>
+                    </div>
+                    </a>
+                    <div class="col-md-3 ">
+                        <a href="{{url_for('deleteGenre', genre_id = genre.id)}}">
+                                <button class="btn btn-default" id="delete-genre">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
+                                
+                                </button>
+                        </a>
+                    </div>    
+				<div class="col-md-1"></div>
+            </div>
+        
+	{% endfor %}
+{% endblock %}

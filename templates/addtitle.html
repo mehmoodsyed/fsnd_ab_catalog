@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>New Audiobook</h1>
+		</div>
+	</div>
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<ul>
+					{% for message in messages %}
+						<li> <strong> {{ message }} </strong> </li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+	</div>
+	
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+                    <label for="title">Title:</label>
+                    <textarea class="form-control" maxlength="500" rows="3" name="title" required="required" placeholder="Title of the audiobook"></textarea>
+
+					<label for="duration">Duration:</label>
+					<input type ="text" maxlength="8" class="form-control" name="duration" placeholder="Duration format: abH:xyM">
+
+					<label for="author">Author:</label>
+					<input type ="text" maxlength="250" class="form-control" name="author" placeholder="Name of author(s)">
+					<label for="narrator">Narrator:</label>
+					<input type ="text" maxlength="250" class="form-control" name="narrator" placeholder="Name of narrator(s)">
+                    
+					<label for="price">Price:</label>
+					<div class="input-group">
+						<div class="input-group-addon">$</div>
+                        <input type ="text" class="form-control" maxlength="10" name="price" placeholder="Price in $">
+                    </div>
+                        <label for="url">URL:</label>
+                        <textarea class="form-control" maxlength="500" rows="3" name="url" placeholder="http link"></textarea>
+    
+                        <div class="col-md-1"></div>
+                    
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

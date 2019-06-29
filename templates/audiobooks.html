@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+      		{% if messages %}          
+        	<ul>
+        		{% for message in messages %}
+            		<li> <strong> {{ message }} </strong> </li>
+        		{% endfor %}
+        	</ul>
+        	{% endif %}
+    	{% endwith %}
+	</div>
+
+	{% for audiobook in audiobook %}		
+		<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<a href = "{{url_for('showBookDetails', audiobook_id = audiobook.id)}}">
+						<h3>{{audiobook.title}}</h3>
+					</a>
+				</div>
+			<div class="col-md-1"></div>
+		</div>		
+	{% endfor %}
+{% endblock %}

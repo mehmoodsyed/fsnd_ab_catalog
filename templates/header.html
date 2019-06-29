@@ -1,0 +1,30 @@
+<div class="navbar navbar-default">
+	<div class="col-md-1">
+		<img src="/static/audiobook3.jpg" class="img-responsive" alt="Cinque Terre" width="100" height="100">
+	</div>
+	<div class="row top-menu">
+		<div class="container">
+			
+			<div class="navbar-header">
+				<div class="navbar-brand">Audiobook Catalog</div>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="/audiobooks">Titles</a></li>
+				<li><a href="/genre">Genre</a></li>
+			</ul>
+		
+			<p class="navbar-text navbar-right">
+				{% if session.profile %}
+					<a href="/logout">
+						{% if session.profile.picture %}
+							<img class="img-circle" src="{{session.profile.picture}}" width="24">
+						{% endif %}
+						{{session.profile.name}}
+					</a>
+				{% else %}
+					<a href="/oauth2authorize">Login</a>
+				{% endif %}
+			</p>
+		</div>
+	</div>
+</div>

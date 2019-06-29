@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li> <strong> {{ message }} </strong> </li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+</div>
+
+<h2> Are you sure you want to delete {{genre.name}}? </h2>
+
+<form action="#" method="post" id="nameform">
+    
+    <button type="submit" form="nameform" class="btn btn-default delete" id="nameform" type="submit">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button> 
+        <a href = "{{url_for('showGenre')}}"></a> </form>
+        <a href = "{{url_for('showGenre')}}">
+            <button class="btn btn-default">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+        </a>
+    
+    
+
+{% endblock %}
